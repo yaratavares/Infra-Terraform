@@ -25,8 +25,8 @@ variable "instance_number" {
   }
 
   validation {
-    condition     = length(var.instance_number.dev) == 1 && length(var.instance_number.dev) > 1
-    error_message = "The instance_number value must be valid number"
+    condition     = var.instance_number.dev == 1 && var.instance_number.prod > 1
+    error_message = "The instance_number value must be valid number."
   }
 }
 
