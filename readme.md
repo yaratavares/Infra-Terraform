@@ -13,3 +13,7 @@ terraform destroy - destrói os recursos
 TF_VAR_aws_profile=tf01 terraform plan - assim ele vai ler a variável em tempo de execução
 terraform plan -var="aws_profile=tf01" -var="instance_type=t2.micro" - isso pode até sobrescrever as variavéis do arquivo
 terraform plan -var-file="prod.tfvars" -auto-aprove
+
+
+terraform show - mostra o tfstate de uma forma mais facil de ser lida
+terraform console - abre o console conseeguimos achar os objetos de maneira mais facil
