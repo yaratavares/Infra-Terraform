@@ -29,5 +29,6 @@ variable "instance_tags" {
   default = {
     "Name"    = "Ubuntu"
     "Project" = "catalog-instance"
+    "Env"     = "dev"
   }
 }
