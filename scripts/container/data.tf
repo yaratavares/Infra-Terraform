@@ -18,5 +18,10 @@ data "archive_file" "json" {
     content  = data.template_file.json.rendered
     filename = "${random_pet.object_name.id}.json"
   }
+}
 
+data "aws_ami" "ubuntu" {
+  owners      = ["amazon"]
+  most_recent = true
+  name_regex  = "ubuntu"
 }

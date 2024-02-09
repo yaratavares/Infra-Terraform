@@ -26,3 +26,7 @@ output "instance_public_ips" {
 output "instance_names" {
   value = join(",", aws_instance.web.*.tags.Name)
 }
+
+output "instance_arn" {
+  value = aws_instance.web.arn
+}

@@ -13,16 +13,6 @@ variable "aws_profile" {
   description = ""
 }
 
-variable "instance_ami" {
-  type        = string
-  description = ""
-
-  validation {
-    condition     = length(var.instance_ami) > 4 && substr(var.instance_ami, 0, 4) == "ami-"
-    error_message = "The instance_ami value must be valid AMI id, starting with \"ami-\"."
-  }
-}
-
 variable "instance_number" {
   type = object({
     dev  = number
@@ -33,9 +23,16 @@ variable "instance_number" {
     dev  = 1
     prod = 2
   }
+
+  validation {
+    condition     = length(var.instance_number.dev) == 1 && length(var.instance_number.dev) > 1
+    error_message = "The instance_number value must be valid number"
+  }
 }
 
 variable "instance_type" {
   type        = string
   description = ""
+
+  default = "t2.micro"
 }
