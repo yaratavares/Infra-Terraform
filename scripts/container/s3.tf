@@ -14,14 +14,6 @@ resource "aws_s3_bucket" "remote-state" {
   tags = local.common_tags
 }
 
-output "remote_state_bucket" {
-  value = aws_s3_bucket.remote-state.bucket
-}
-
-output "remote_state_bucket_arn" {
-  value = aws_s3_bucket.remote-state.arn
-}
-
 resource "aws_s3_bucket_object" "this" {
   bucket = aws_s3_bucket.this.bucket
   key    = "config/${local.ip_filepath}"

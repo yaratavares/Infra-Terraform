@@ -1,6 +1,7 @@
 variable "environment" {
   type        = string
   description = ""
+  default     = "dev"
 }
 
 variable "aws_region" {
@@ -16,19 +17,26 @@ variable "aws_profile" {
 variable "instance_ami" {
   type        = string
   description = ""
+
+  validation {
+    condition     = length(var.instance_ami) > 4 && substr(var.instance_ami, 0, 4) == "ami-"
+    error_message = "The instance_ami value must be valid AMI id, starting with \"ami-\"."
+  }
+}
+
+variable "instance_number" {
+  type = object({
+    dev  = number
+    prod = number
+  })
+
+  default = {
+    dev  = 1
+    prod = 2
+  }
 }
 
 variable "instance_type" {
   type        = string
   description = ""
-}
-
-variable "instance_tags" {
-  type        = map(string)
-  description = ""
-  default = {
-    "Name"    = "Ubuntu"
-    "Project" = "catalog-instance"
-    "Env"     = "dev"
-  }
 }

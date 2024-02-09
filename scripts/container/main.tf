@@ -6,18 +6,18 @@ terraform {
       source  = "hashicorp/aws"
       version = "3.23.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.6.1"
+    }
   }
 
   backend "s3" {}
 }
 
+data "aws_caller_identity" "current" {}
+
 provider "aws" {
   region  = var.aws_region
   profile = var.aws_profile
-}
-
-resource "aws_instance" "web" {
-  ami           = var.instance_ami
-  instance_type = var.instance_type
-  tags          = var.instance_tags
 }
