@@ -5,7 +5,6 @@ resource "aws_instance" "web" {
   instance_type = var.instance_type
 
   tags = merge(local.common_tags, {
-    "Env"  = format("%s", var.environment)
     "Name" = format("Instance %d", count.index + 1)
   })
 }

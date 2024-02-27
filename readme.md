@@ -19,3 +19,5 @@ terraform show - mostra o tfstate de uma forma mais facil de ser lida
 terraform console - abre o console conseeguimos achar os objetos de maneira mais facil
 
 terraform init -backend=true -backend-config="backend.hcl"
+
+terraform import aws_s3_bucket.remote-state tfstate-381492073784
