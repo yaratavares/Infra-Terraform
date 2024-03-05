@@ -7,22 +7,15 @@ terraform {
       source  = "hashicorp/aws"
       version = "5.45.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.6.1"
+    }
   }
 }
 
 provider "aws" {
-  region  = "sa-east-1"
-  profile = "tf01"
+  region  = var.aws_region
+  profile = var.aws_profile
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = "bucket-to-index-catalog-123"
-
-  tags = {
-    Name        = "Bucket to Index Catalog"
-    Environment = "Dev"
-    ManagedBy   = "Terraform"
-    OwnerBy     = "Yara Tavares"
-    UpdateAt    = "2024-03-03"
-  }
-}
