@@ -22,5 +22,7 @@ resource "aws_s3_bucket" "example" {
     Name        = "Bucket to Index Catalog"
     Environment = "Dev"
     ManagedBy   = "Terraform"
+    OwnerBy     = "Yara Tavares"
+    UpdateAt    = "2024-03-03"
   }
 }
